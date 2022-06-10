@@ -31,7 +31,7 @@
 
 using namespace nbt;
 
-class read_test : public CxxTest::TestSuite
+class write_test : public CxxTest::TestSuite
 {
 public:
     void test_stream_writer_big()
