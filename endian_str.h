@@ -31,11 +31,11 @@
 namespace endian
 {
 
-enum endian { little, big };
+enum struct endianness { little, big };
 
 ///Reads number from stream in specified endian
 template<class T>
-void read(std::istream& is, T& x, endian e);
+void read(std::istream& is, T& x, endianness e);
 
 ///Reads number from stream in little endian
 NBT_EXPORT void read_little(std::istream& is, uint8_t& x);
@@ -63,7 +63,7 @@ NBT_EXPORT void read_big(std::istream& is, double& x);
 
 ///Writes number to stream in specified endian
 template<class T>
-void write(std::ostream& os, T x, endian e);
+void write(std::ostream& os, T x, endianness e);
 
 ///Writes number to stream in little endian
 NBT_EXPORT void write_little(std::ostream& os, uint8_t x);
@@ -90,18 +90,18 @@ NBT_EXPORT void write_big(std::ostream& os, float x);
 NBT_EXPORT void write_big(std::ostream& os, double x);
 
 template<class T>
-void read(std::istream& is, T& x, endian e)
+void read(std::istream& is, T& x, endianness e)
 {
-    if(e == little)
+    if(e == endianness::little)
         read_little(is, x);
     else
         read_big(is, x);
 }
 
 template<class T>
-void write(std::ostream& os, T x, endian e)
+void write(std::ostream& os, T x, endianness e)
 {
-    if(e == little)
+    if(e == endianness::little)
         write_little(os, x);
     else
         write_big(os, x);

@@ -50,7 +50,7 @@ public:
         nbt::io::stream_reader reader(is);
 
         TS_ASSERT_EQUALS(&reader.get_istr(), &is);
-        TS_ASSERT_EQUALS(reader.get_endian(), endian::big);
+        TS_ASSERT_EQUALS(reader.get_endian(), ::endian::endianness::big);
 
         TS_ASSERT_EQUALS(reader.read_type(), tag_type::Byte);
         TS_ASSERT_EQUALS(reader.read_type(true), tag_type::End);
@@ -90,9 +90,9 @@ public:
             'a', 'b', 'c', 'd' //unexpected EOF
         };
         std::istringstream is(input);
-        nbt::io::stream_reader reader(is, endian::little);
+        nbt::io::stream_reader reader(is, ::endian::endianness::little);
 
-        TS_ASSERT_EQUALS(reader.get_endian(), endian::little);
+        TS_ASSERT_EQUALS(reader.get_endian(), ::endian::endianness::little);
 
         int64_t i;
         reader.read_num(i);
@@ -160,7 +160,7 @@ public:
         std::ifstream file("littletest_uncompr", std::ios::binary);
         TS_ASSERT(file);
 
-        auto pair = nbt::io::read_compound(file, endian::little);
+        auto pair = nbt::io::read_compound(file, ::endian::endianness::little);
         TS_ASSERT_EQUALS(pair.first, "Level");
         TS_ASSERT_EQUALS(pair.second->get_type(), tag_type::Compound);
         verify_bigtest_structure(*pair.second);

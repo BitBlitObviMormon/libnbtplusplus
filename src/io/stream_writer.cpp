@@ -25,7 +25,7 @@ namespace nbt
 namespace io
 {
 
-void write_tag(const std::string& key, const tag& t, std::ostream& os, endian::endian e)
+void write_tag(const std::string& key, const tag& t, std::ostream& os, endian::endianness e)
 {
     stream_writer(os, e).write_tag(key, t);
 }

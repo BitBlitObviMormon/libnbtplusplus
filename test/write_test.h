@@ -40,7 +40,7 @@ public:
         nbt::io::stream_writer writer(os);
 
         TS_ASSERT_EQUALS(&writer.get_ostr(), &os);
-        TS_ASSERT_EQUALS(writer.get_endian(), endian::big);
+        TS_ASSERT_EQUALS(writer.get_endian(), ::endian::endianness::big);
 
         writer.write_type(tag_type::End);
         writer.write_type(tag_type::Long);
@@ -71,9 +71,9 @@ public:
     void test_stream_writer_little()
     {
         std::ostringstream os;
-        nbt::io::stream_writer writer(os, endian::little);
+        nbt::io::stream_writer writer(os, ::endian::endianness::little);
 
-        TS_ASSERT_EQUALS(writer.get_endian(), endian::little);
+        TS_ASSERT_EQUALS(writer.get_endian(), ::endian::endianness::little);
 
         writer.write_num(int32_t(0x0a0b0c0d));
 
@@ -250,11 +250,11 @@ public:
 
         sstr.str(""); //Reset and reuse stream
         //Write into stream in Little Endian
-        io::write_tag(orig_pair.first, *orig_pair.second, sstr, endian::little);
+        io::write_tag(orig_pair.first, *orig_pair.second, sstr, ::endian::endianness::little);
         TS_ASSERT(sstr);
 
         //Read from stream in Little Endian and compare
-        written_pair = io::read_compound(sstr, endian::little);
+        written_pair = io::read_compound(sstr, ::endian::endianness::little);
         TS_ASSERT_EQUALS(orig_pair.first, written_pair.first);
         TS_ASSERT(*orig_pair.second == *written_pair.second);
 

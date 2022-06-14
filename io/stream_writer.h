@@ -45,7 +45,7 @@ class output_error : public std::runtime_error
  * @param e the byte order of the written data. The Java edition
  * of Minecraft uses Big Endian, the Pocket edition uses Little Endian
  */
-NBT_EXPORT void write_tag(const std::string& key, const tag& t, std::ostream& os, endian::endian e = endian::big);
+NBT_EXPORT void write_tag(const std::string& key, const tag& t, std::ostream& os, endian::endianness e = endian::endianness::big);
 
 /**
  * @brief Helper class for writing NBT tags to output streams
@@ -65,14 +65,14 @@ public:
      * @param e the byte order of the written data. The Java edition
      * of Minecraft uses Big Endian, the Pocket edition uses Little Endian
      */
-    explicit stream_writer(std::ostream& os, endian::endian e = endian::big) noexcept:
+    explicit stream_writer(std::ostream& os, endian::endianness e = endian::endianness::big) noexcept:
         os(os), endian(e)
     {}
 
     ///Returns the stream
     std::ostream& get_ostr() const { return os; }
     ///Returns the byte order
-    endian::endian get_endian() const { return endian; }
+    endian::endianness get_endian() const { return endian; }
 
     /**
      * @brief Writes a named tag into the stream, including the tag type
@@ -106,7 +106,7 @@ public:
 
 private:
     std::ostream& os;
-    const endian::endian endian;
+    const endian::endianness endian;
 };
 
 template<class T>
