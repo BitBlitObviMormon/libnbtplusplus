@@ -20,6 +20,7 @@
 #ifndef TAG_STRING_H_INCLUDED
 #define TAG_STRING_H_INCLUDED
 
+#include "nbt_export.h"
 #include "crtp_tag.h"
 #include <string>
 

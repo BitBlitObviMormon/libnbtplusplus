@@ -20,6 +20,7 @@
 #ifndef STREAM_READER_H_INCLUDED
 #define STREAM_READER_H_INCLUDED
 
+#include "nbt_export.h"
 #include "endian_str.h"
 #include "tag.h"
 #include "tag_compound.h"

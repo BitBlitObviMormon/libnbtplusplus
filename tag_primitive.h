@@ -20,6 +20,7 @@
 #ifndef TAG_PRIMITIVE_H_INCLUDED
 #define TAG_PRIMITIVE_H_INCLUDED
 
+#include "nbt_export.h"
 #include "crtp_tag.h"
 #include "primitive_detail.h"
 #include "io/stream_reader.h"

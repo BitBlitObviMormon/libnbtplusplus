@@ -20,6 +20,7 @@
 #ifndef TAG_ARRAY_H_INCLUDED
 #define TAG_ARRAY_H_INCLUDED
 
+#include "nbt_export.h"
 #include "crtp_tag.h"
 #include <type_traits>
 #include <vector>

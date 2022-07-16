@@ -20,6 +20,7 @@
 #ifndef TAG_LIST_H_INCLUDED
 #define TAG_LIST_H_INCLUDED
 
+#include "nbt_export.h"
 #include "crtp_tag.h"
 #include "tagfwd.h"
 #include "value_initializer.h"
